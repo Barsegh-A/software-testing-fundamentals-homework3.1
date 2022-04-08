@@ -34,7 +34,7 @@ public class SpyurTest {
         driver.findElement(By.xpath("//*[@id=\"search\"]/button")).click();
         driver.findElement(By.cssSelector("#results_list_wrapper > a:nth-child(1)")).click();
 
-        String title = driver.findElement(By.className("page_title")).getText();
+        String title = driver.findElements(By.className("page_title")).get(1).getText();
         assertEquals(title, "ՀԱՅԱՍՏԱՆԻ ԱՄԵՐԻԿՅԱՆ ՀԱՄԱԼՍԱՐԱՆ", "Wrong title of result page for AUA");
 
         List<WebElement> phoneNumbers = driver.findElements(By.className("call"));
