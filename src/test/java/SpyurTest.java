@@ -28,11 +28,15 @@ public class SpyurTest {
     }
 
     @Test
-    public void auaPhoneNumbersCountTest(){
+    public void auaPageTest(){
         driver.findElement(By.name("company_name")).sendKeys("Ամերիկյան համալսարան");
         driver.findElement(By.className("checkbox_button")).click();
         driver.findElement(By.xpath("//*[@id=\"search\"]/button")).click();
         driver.findElement(By.cssSelector("#results_list_wrapper > a:nth-child(1)")).click();
+
+        String title = driver.findElement(By.className("page_title")).getText();
+        assertEquals(title, "ՀԱՅԱՍՏԱՆԻ ԱՄԵՐԻԿՅԱՆ ՀԱՄԱԼՍԱՐԱՆ", "Wrong title of result page for AUA");
+
         List<WebElement> phoneNumbers = driver.findElements(By.className("call"));
         assertEquals(phoneNumbers.size(), 3, "Wrong number of phone numbers for AUA");
     }
